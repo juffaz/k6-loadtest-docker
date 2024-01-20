@@ -8,10 +8,14 @@ export let options = {
 };
 
 export default function () {
-    const min = 1111119;
-    const max = 13333319;
+    const min = 10000;
+    const max = 20000;
     const randomId = Math.floor(Math.random() * (max - min + 1)) + min;
-    const url = `http://apigw.service.test-consul/accounts/by-id/${randomId}`;
-    http.get(url);
+    const url = `http://your-api-url/byid/${randomId}`;
+    const authToken = 'your_auth_token_here'; // Замените на ваш реальный auth_token
+    const headers = {
+        'auth_token': authToken,
+    };
+    http.get(url, { headers: headers });
     sleep(1);
 }
